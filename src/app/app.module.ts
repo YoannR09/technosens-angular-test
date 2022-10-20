@@ -3,18 +3,17 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DisplaypComponent } from './product/displayp/displayp.component';
+import { DisplaypModule } from './product/inventory/displayp/displayp.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DisplaypComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    DisplaypModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

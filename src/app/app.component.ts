@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'technosens-angular-test';
+
+  showError(error: Error) {
+    console.warn(error)
+  }
 }
