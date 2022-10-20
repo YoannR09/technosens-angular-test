@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from "@angular/common/http";
 import {
   Component,
   EventEmitter,
@@ -29,8 +30,8 @@ export class DisplaypComponent implements OnInit, OnDestroy {
   async ngOnInit() {
     try {
       await this.service.read()
-    } catch(e: any) {
-      this.onError.next(e)
+    } catch(err: any) {
+      this.onError.next(err as HttpErrorResponse)
     }
     this.service.infosChanged
       .pipe(
@@ -57,21 +58,27 @@ export class DisplaypComponent implements OnInit, OnDestroy {
   }
 
   async command(info: Info) {
-    this.service.command(info).catch(
-      err => this.onError.next(err)
-    )
+    try {
+      await this.service.command(info)
+    } catch(err: any) {
+      this.onError.next(err as HttpErrorResponse)
+    }
   }
 
   async cancel(info: Info) {
-    this.service.cancel(info).catch(
-      err => this.onError.next(err)
-    )
+    try {
+      await this.service.cancel(info)
+    } catch(err: any) {
+      this.onError.next(err as HttpErrorResponse)
+    }
   }
 
   // permet de faire une relance
   async revival(info: Info) {
-    await this.service.rev(info).catch(
-      err => this.onError.next(err)
-    )
+    try {
+      await this.service.rev(info)
+    } catch(err: any) {
+      this.onError.next(err as HttpErrorResponse)
+    }
   }
 }
