@@ -1,0 +1,12 @@
+<h1>Inventaire</h1>
+
+<div *ngFor="let info of infos">
+  <div>{{service.getInfoOfQuantite(info.quantite, info.title)}}</div>
+  <div *ngIf="getInfoData(info)">
+    <div>{{info.data}}</div>
+  </div>
+
+  <button (click)="command(product)">Commander un produit</button>
+  <button (click)="cancel(product)">Annuler la commande</button>
+  <button #relance (click)="revival(product)">Relancer le fournisseur</button>
+</div>
