@@ -20,10 +20,10 @@ export class ProductService {
   constructor(private http: HttpClient) {}
 
   async read() {
-    this.infosChanged.next(PRODUCTS_MOCK)
-    //this.infosChanged.next(
-    //  await lastValueFrom(this.http.get<Info[]>("https://api-privee/info"))
-    //)
+    // this.infosChanged.next(PRODUCTS_MOCK)
+    this.infosChanged.next(
+      await lastValueFrom(this.http.get<Info[]>("https://api-privee/info"))
+    )
   }
 
   async command(info: Info) {
